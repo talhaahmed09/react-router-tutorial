@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Invoices from './components/Invoices/Invoices';
 import Invoice from './components/Invoices/Invoice';
 import Expenses from './components/Expenses/Expenses';
+import Login from './components/auth/Login';
+import ProtectedRoutes from './components/utils/ProtectedRoutes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +14,8 @@ root.render(
     <Router>
     <Routes>
       <Route path="/" element={<App />}>
+        <Route index element={<Login/>}/>
+        <Route element={<ProtectedRoutes/>}>
         <Route path="expenses" element={<Expenses />} />
         <Route path="invoices" element={<Invoices />}>
           <Route
@@ -24,6 +28,8 @@ root.render(
           />
           <Route path=":invoiceId" element={<Invoice />} />
         </Route>
+        </Route>
+        <Route path="login" element={<Login />} />
         <Route
           path="*"
           element={
@@ -34,7 +40,7 @@ root.render(
         />
       </Route>
     </Routes>
-  </Router>,
+  </Router>
   </React.StrictMode>
 );
 
