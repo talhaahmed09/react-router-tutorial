@@ -5,7 +5,6 @@ const Login = () => {
   let navigate = useNavigate();
 
   const handleClick = () => {
-    debugger;
     window.localStorage.setItem('auth', true);
     navigate('/invoices')
   }
